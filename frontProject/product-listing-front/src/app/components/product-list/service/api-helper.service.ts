@@ -20,42 +20,6 @@ export class ApiHelperService {
     return this.request({ endpoint, method: 'GET', queryParams });
   }
 
-  // public post({
-  //   endpoint,
-  //   data = {},
-  //   queryParams = {},
-  // }: {
-  //   endpoint: string;
-  //   data?: any;
-  //   queryParams?: any;
-  // }): Observable<any> {
-  //   return this.request({ endpoint, method: 'POST', data, queryParams });
-  // }
-
-  // public put({
-  //   endpoint,
-  //   data = {},
-  //   queryParams = {},
-  // }: {
-  //   endpoint: string;
-  //   data?: any;
-  //   queryParams?: any;
-  // }): Observable<any> {
-  //   return this.request({ endpoint, method: 'PUT', data, queryParams });
-  // }
-
-  // public delete({
-  //   endpoint,
-  //   data = {},
-  //   queryParams = {},
-  // }: {
-  //   endpoint: string;
-  //   data?: any;
-  //   queryParams?: any;
-  // }): Observable<any> {
-  //   return this.request({ endpoint, method: 'DELETE', data, queryParams });
-  // }
-
   public request({
     endpoint,
     method = 'GET',
@@ -75,30 +39,11 @@ export class ApiHelperService {
       params: queryParams,
     };
 
-    console.log(
-      method,
-      url,
-      JSON.stringify(requestOptions),
-      JSON.stringify(data),
-    );
 
     let req: Observable<any>;
     if (methodWanted === 'get') {
       req = this.http.get(url, { ...requestOptions, observe: 'response' });
     }
-    // } else if (methodWanted === 'post') {
-    //   req = this.http.post(url, data, {
-    //     ...requestOptions,
-    //     observe: 'response',
-    //   });
-    // } else if (methodWanted === 'put') {
-    //   req = this.http.put(url, data, {
-    //     ...requestOptions,
-    //     observe: 'response',
-    //   });
-    // } else {
-    //   req = this.http.delete(url, { ...requestOptions, observe: 'response' });
-    // }
 
     else {
       throw new Error(`error calling ${url} with method ${methodWanted}`);

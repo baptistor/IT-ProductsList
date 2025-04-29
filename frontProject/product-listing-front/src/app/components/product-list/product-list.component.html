@@ -1,5 +1,5 @@
 <div *ngIf="onNormalConfig">
-    <h1>Product Listing</h1>
+    <h1>All Catalogue</h1>
   
     <div class="menu">
       <button (click)="filterCategory()">Sort By Category</button>
@@ -63,7 +63,7 @@
     </div>
   
     <ng-template #noMoreCategory>
-      <p>No more products in this category.</p>
+      <p>No more categories.</p>
   
       <div class="footer">
         <button (click)="previousCategory()" [disabled]="currentCategory === 0">Previous</button>
@@ -106,7 +106,7 @@
     </div>
   
     <ng-template #noProductsPrice>
-      <p>No products available.</p>
+      <p>No more products available.</p>
   
       <div class="footer">
         <button (click)="previousPageForPrice()" [disabled]="currentPageForPrice === 0">Previous</button>

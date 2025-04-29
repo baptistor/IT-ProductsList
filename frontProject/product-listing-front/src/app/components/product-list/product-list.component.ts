@@ -36,10 +36,8 @@ export class ProductListComponent implements OnInit {
   constructor(private apiHelper: ApiHelperService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    console.log("test");
     this.loadProducts();
     this.loadAllCategories();
-    console.log(this.allCategories);
   }
 
   loadProducts(): void {
@@ -85,7 +83,6 @@ export class ProductListComponent implements OnInit {
       this.currentCategory = 0;
       this.currentPage = 0;
       this.cdr.markForCheck();
-      console.log("taille de produits "+this.products.length);
     });
   }
 
@@ -128,7 +125,6 @@ export class ProductListComponent implements OnInit {
   }
 
   nextPage(): void {
-    console.log("test");
     this.currentPage++;
     this.loadProducts();
   }
