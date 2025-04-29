@@ -1,0 +1,123 @@
+<div *ngIf="onNormalConfig">
+    <h1>Product Listing</h1>
+  
+    <div class="menu">
+      <button (click)="filterCategory()">Sort By Category</button>
+      <button (click)="loadProductsFilterPrice()">Sort By Price</button>
+    </div>
+  
+    <div *ngIf="products.length > 0; else noProducts">
+      <ul>
+        <li *ngFor="let product of products; trackBy: trackByProduct" appHoverHighlight>
+          <strong>{{ product.name }}</strong> - {{ product.category }} - ${{ product.price }}
+        </li>
+      </ul>
+  
+      <div class="footer">
+        <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  
+        <div class="page-size">
+          <input id="pageSize" type="number" min="1" placeholder="Enter page size" />
+          <button (click)="changePageSize()">Change Page Size</button>
+        </div>
+  
+        <button (click)="nextPage()" [disabled]="products.length === 0">Next</button>
+      </div>
+    </div>
+  
+    <ng-template #noProducts>
+      <p>No products available.</p>
+  
+      <div class="footer">
+        <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  
+        <div class="page-size">
+          <input id="pageSize" type="number" min="1" placeholder="Enter page size" />
+          <button (click)="changePageSize()">Change Page Size</button>
+        </div>
+  
+        <button (click)="nextPage()" [disabled]="true">Next</button>
+      </div>
+    </ng-template>
+  </div>
+  
+  <div *ngIf="onSortCategory">
+    <h1>Product Listing for Category: {{ products.length > 0 ? products[0].category : '' }}</h1>
+  
+    <div class="menu">
+      <button (click)="loadProducts()">All Catalogue</button>
+      <button (click)="loadProductsFilterPrice()">Sort By Price</button>
+    </div>
+  
+    <div *ngIf="products.length > 0; else noMoreCategory">
+      <ul>
+        <li *ngFor="let product of products; trackBy: trackByProduct" appHoverHighlight>
+          <strong>{{ product.name }}</strong> - {{ product.category }} - ${{ product.price }}
+        </li>
+      </ul>
+  
+      <div class="footer">
+        <button (click)="previousCategory()" [disabled]="currentCategory === 0">Previous</button>
+        <button (click)="nextCategory()" [disabled]="products.length === 0">Next</button>
+      </div>
+    </div>
+  
+    <ng-template #noMoreCategory>
+      <p>No more products in this category.</p>
+  
+      <div class="footer">
+        <button (click)="previousCategory()" [disabled]="currentCategory === 0">Previous</button>
+  
+        <div class="page-size">
+          <input id="pageSize" type="number" min="1" placeholder="Enter page size" />
+          <button (click)="changePageSize()">Change Page Size</button>
+        </div>
+  
+        <button (click)="nextCategory()" [disabled]="true">Next</button>
+      </div>
+    </ng-template>
+  </div>
+  
+  <div *ngIf="onSortPrice">
+    <h1>Product Listing Sorted by Price</h1>
+  
+    <div class="menu">
+      <button (click)="filterCategory()">Sort By Category</button>
+      <button (click)="loadProducts()">All Catalogue</button>
+    </div>
+  
+    <div *ngIf="products.length > 0; else noProductsPrice">
+      <ul>
+        <li *ngFor="let product of products; trackBy: trackByProduct" appHoverHighlight>
+          <strong>{{ product.name }}</strong> - {{ product.category }} - ${{ product.price }}
+        </li>
+      </ul>
+  
+      <div class="footer">
+        <button (click)="previousPageForPrice()" [disabled]="currentPageForPrice === 0">Previous</button>
+  
+        <div class="page-size">
+          <input id="pageSize" type="number" min="1" placeholder="Enter page size" />
+          <button (click)="changePageSizeForPrice()">Change Page Size</button>
+        </div>
+  
+        <button (click)="nextPageForPrice()" [disabled]="products.length === 0">Next</button>
+      </div>
+    </div>
+  
+    <ng-template #noProductsPrice>
+      <p>No products available.</p>
+  
+      <div class="footer">
+        <button (click)="previousPageForPrice()" [disabled]="currentPageForPrice === 0">Previous</button>
+  
+        <div class="page-size">
+          <input id="pageSize" type="number" min="1" placeholder="Enter page size" />
+          <button (click)="changePageSizeForPrice()">Change Page Size</button>
+        </div>
+  
+        <button (click)="nextPageForPrice()" [disabled]="true">Next</button>
+      </div>
+    </ng-template>
+  </div>
+  
